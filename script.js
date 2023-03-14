@@ -1,6 +1,12 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+function savetostorage(){
+  console.log(this.innerHTML);
+}
+var userdata = [];
+const svbtn = document.querySelectorAll('.saveBtn');
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -8,6 +14,10 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+  svbtn.addEventListener("click", function(event){
+    console.log("TEST");
+  });
+
   //
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
@@ -21,3 +31,34 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+var crntime=dayjs().format('H');
+console.log(crntime);
+
+for (i=9;i<18;i++){
+  if (i<crntime){
+    var mnshour = ('hour-'+i)
+    document.getElementById(mnshour).className="row time-block past"
+  };
+  if (i==crntime){
+    var mnshour = ('hour-'+i)
+    document.getElementById(mnshour).className="row time-block present"
+  };
+  if (i>crntime){
+    var mnshour = ('hour-'+i)
+    document.getElementById(mnshour).className="row time-block future"
+  };
+  if (i>18 || i<9){
+    document.getElementById(mnshour).className="row time-block past"
+  };
+}
+
+
+getday();
+setInterval(getday,1000);
+function getday(){
+  
+  var date=dayjs().format('dddd, MMMM Do');
+  document.getElementById('currentDay').innerHTML = date;
+};
+console.log(userdata);
