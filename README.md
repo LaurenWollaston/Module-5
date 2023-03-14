@@ -6,3 +6,5 @@ It uses dayjs to find the time, and display it on the page as well as highlight 
 
 
 ![1678836827050](image/README/1678836827050.png)
+
+Link to deployed github page: https://laurenwollaston.github.io/Work-Day-Scheduler/
